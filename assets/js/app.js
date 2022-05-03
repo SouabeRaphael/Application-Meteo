@@ -3,22 +3,28 @@ let app = new Vue({
 
     data: {
         info: null,
-        
+        request: '',
+        startUrl: 'https://api.openweathermap.org/data/2.5/weather?q=',
+        endUrl : '&appid=d31f06ee007a3b205abd05ca07748597',
+        temp: null,
     },
     methods: {
-        
+        getWeather: function() {
+            axios
+            .get(this.startUrl+this.request+this.endUrl)
+            .then(response => (this.temp = response.data.main.temp))
+        },
         
     },
     mounted () {
-        axios
-          .get('https://api.openweathermap.org/data/2.5/onecall?lat=49.4929&lon=0.1134&exclude=hourly,minutely&units=metric&appid=0b714303b59b32e758cc43e063f1b1aa')
-          .then(response => (this.info = response))
-      }
+        if(this.request = ' '){
+            this.request = "Paris"
+            getWeather()
+        }
+    }
+    
 })
 
-
-// const instance = axios.create({
-//     baseURL: 'https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d31f06ee007a3b205abd05ca07748597',
-//   });
+// API KEY   d31f06ee007a3b205abd05ca07748597  
 
 

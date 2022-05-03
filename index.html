@@ -18,14 +18,20 @@
     <div class="container" id="myApp">
         <section class="screen">
            <div class="temp">
-               <p>30°C</p>
-               <p>Max 32° Min 25°</p>
-               <p></p>
-           </div>
-           <div class="climat">
+               <div class="temperature">
+                    <p>{{temp}}</p>
+                    <p>Max 32° Min 25°</p>
+               </div>
+            </div>
+
+           <!-- <div class="climat"> -->
                <div class="sun"></div>
+           <!-- </div> -->
+           <div class="city">
+                <input type="text" v-model="request" v-on:keyup.enter="getWeather">
            </div>
-            
+           {{info}}
+           {{result}}
         </section>
     </div>
 </body>
