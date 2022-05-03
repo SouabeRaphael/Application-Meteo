@@ -1,1 +1,10 @@
-const fdp = "adrien";
+let app = new Vue({
+    el: "#myApp",
+
+    data: {
+
+    },
+    methods: {
+
+    }
+})
