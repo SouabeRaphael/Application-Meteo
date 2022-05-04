@@ -22,14 +22,23 @@
                     <p>{{temp}}°</p>
                     <p>Max {{maxDegres}}° Min {{minDegres}}°</p>
                 </div>
-                <div class="share" @click="partage">
-                    <ion-icon class="share_icon"v-bind:class="{ 'color': changeColor }" v-bind:class="{ 'color': changeColor }" name="share-outline"></ion-icon>
+                <div class="share" @click="partage()">
+                    <ion-icon :class="[show? 'color' : 'share_icon']" name="share-outline"></ion-icon>
                 </div>
                 
             </div>
             <div class="slide_down" v-if="show">
-                <input class="input-email" v-model="valueInput" @input="checkInput" type="email">
-                <textarea class="input-commentaire" type="text" name="" id="" cols="20" rows="3"></textarea>
+                <h2>{{cityName}}</h2>
+                <p>{{erreurCity}}</p>
+                <div class="content_email">
+                    <label for="email">Email:</label>
+                    <input class="input-email" v-model="email" @input="checkInput()" type="email">
+                    <p>{{erreur}}</p>
+                </div>
+                <div class="content_commentaire">
+                    <label for="commentaire">Info Météo</label>
+                    <textarea class="input-commentaire" type="text" name="" id="" cols="20" rows="3"></textarea>
+                </div>
             </div>
         
            <div class="sun"></div>

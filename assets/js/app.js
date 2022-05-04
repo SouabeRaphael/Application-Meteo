@@ -14,14 +14,15 @@ let app = new Vue({
         humidity: '',
         show: false,
         changeColor: false,
-        initialColor: true,
+        
         city_regex: /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/,
         regexEmail: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
         
-        
+        verifCity: '',
         email: '',
-        valueInput: '',
-        disableValue: false
+        verifEmail: '',
+        erreur: '',
+        erreurCity: '',
     },
     methods: {
         getWeather: function() {
@@ -40,19 +41,25 @@ let app = new Vue({
         },
         partage(){
             this.show = !this.show;
-            this.changeColor = true;
         },
         checkInput(){
-            this.disableValue = !this.regexEmail(this.test);
-            if(this.disableValue == false){
-                console.log('pas derreur');
+            this.verifEmail = this.regexEmail.test(this.email);
+            // console.log(this.verifEmail);
+            if(this.verifEmail == false){
+                this.erreur = 'email incomplet';
             }
             else{
-                console.log('erreur');
+                this.erreur = 'email correct';
             }
         },
         is_city_valid() {
-            console.log(this.city_regex.test(this.cityName))
+            this.verifCity = this.city_regex.test(this.cityName);
+            if(this.verifCity == false){
+                this.erreurCity = 'Ville incorecte';
+            }
+            else{
+                this.erreurCity = 'Ville correct';
+            }
         }
         
     },

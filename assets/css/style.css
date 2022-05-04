@@ -60,11 +60,16 @@ font-weight: 600;
   z-index: 10;
   position: absolute;
   transform: translateX(-20px);
-
+  visibility: visible;
 }
 
 .color{
   color: white;
+  width: 23px;
+  height: 23px;
+  z-index: 10;
+  position: absolute;
+  transform: translateX(-20px);
   visibility: visible;
 }
 
@@ -78,9 +83,14 @@ font-weight: 600;
   animation: slidedown 1s ease-in-out;
   animation-fill-mode: forwards;
   z-index: 1;
+  color: white;
 }
 
-.input-email, .input-commentaire{
+.content_email, .content_commentaire{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  color: white;
   overflow: hidden;
   transform: translateY(20px);
   animation: slidedown_input 1s ease-in-out;
