@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js - Appli météo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark">
+    <div class="wrapper" id="app">
+        <header>
+            <h1 class="display-1 text-white text-center">M3t30</h1>
+            <p class="display-5 text-muted text-center mb-5">Une application météo propulsée par Openweather et Vue.js</p>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Ville</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Ex: Paris" v-model="query"
+                                @keyup.enter="getWeather">
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="weather-infos" v-if="!error">
+                                    <h5>{{cityName}}</h5>
+                                    <p>
+                                        Température : {{currentTemp}} °C<br>
+                                        Température max. : {{maxTemp}} °C<br>
+                                        Température min. : {{minTemp}} °C<br>
+                                        Pression atm. : {{pressure}} hPa<br>
+                                        Humidité : {{humidity}}<br>
+                                        Vent : {{wind}}<br>
+                                        Couverture nuageuse : {{overcast}}<br>
+                                        Lever du soleil : {{sunrise}}<br>
+                                        Coucher du soleil : {{sunset}}<br>
+                                    </p>
+                                </div>
+                                <p class="mb-0" v-else>Saissez un nom de ville valide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Appels des scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="assets/weatherApp.js"></script>
+</body>
+
+</html>

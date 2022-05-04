@@ -23,6 +23,7 @@ body {
 
 /*--------------------------------------------------------------------------------*/
 .screen {
+  position: relative;
   height: 620px;
   width: 300px;
   background: rgb(255, 255, 255);
@@ -33,11 +34,13 @@ body {
   background-image: url(../img/fond.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .temp {
   margin: 25px 20px;
   display: flex;
+  justify-content: space-between;
 }
 .temperature > p:first-child {
   font-size: 50px;
@@ -50,13 +53,71 @@ color: #C96553;
 font-weight: 600;
 }
 
+.share_icon {
+  color: rgb(48, 48, 48);
+  width: 23px;
+  height: 23px;
+  z-index: 10;
+  position: absolute;
+  transform: translateX(-20px);
+
+}
+
+.color{
+  color: white;
+  visibility: visible;
+}
+
+.slide_down {
+  background: #272d52;
+  border-radius: 15px;
+  width: 294px;
+  height: 0px;
+  position: absolute;
+  transform: translateY(-105px);
+  animation: slidedown 1s ease-in-out;
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+.input-email, .input-commentaire{
+  overflow: hidden;
+  transform: translateY(20px);
+  animation: slidedown_input 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+input.input-email{
+  background-color: none;
+  border: none;
+  border-bottom: 2px;
+}
+
+@keyframes slidedown {
+
+  from {height: 0px;}
+  to {height: 300px;}
+}
+
+@keyframes slidedown_input {
+
+  0%{
+    transform: translateY(-200px);
+  }
+  100%{
+    transform: translateY(50px);
+  }
+}
+
+
+
 .sun{
   height: 100px ;
   width: 100px;
   background-color: yellow;
   border-radius: 100px;
   box-shadow: 0px 0px 50px rgb(255, 255, 255);
-  margin: 80px auto 50px;
+  margin: 80px auto 60px;
 }
 
 .city > b{
@@ -69,7 +130,7 @@ font-weight: 600;
   margin-top: -25px;
 }
 
-input {
+input.nameCity {
   background: none;
   border: none;
   font-size: 25px;
@@ -78,4 +139,59 @@ input {
   width: 100%;
   text-align: center;
   text-decoration: none !important;
+}
+input.nameCity:focus{
+  outline: none;
+}
+
+.separateur{
+  width: 70%;
+  height: 2px;
+  background-color: white;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.text_info{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.text_info p {
+  color: white;
+  font-size: 18px;
+}
+
+.info_city{
+  width: 90%;
+  height: auto;
+  margin: 80px auto ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  color: white;
+}
+
+.name_info{
+  font-size: 16px;
+  line-height: 2rem;
+}
+
+.result_info_city{
+  font-size: 16px;
+  line-height: 2rem;
+}
+
+.separateur_bottom{
+  width: 40%;
+  height: 2px;
+  background-color: white;
+  margin: auto;
+  margin-top: 25px;
+  transform: translateY(38px);
 }

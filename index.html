@@ -18,21 +18,41 @@
     <div class="container" id="myApp">
         <section class="screen">
            <div class="temp">
-               <div class="temperature">
-                    <p>{{temp}}</p>
-                    <p>Max 32° Min 25°</p>
-               </div>
+                <div class="temperature">
+                    <p>{{temp}}°</p>
+                    <p>Max {{maxDegres}}° Min {{minDegres}}°</p>
+                </div>
+                <div class="share" @click="partage">
+                    <ion-icon class="share_icon"v-bind:class="{ 'color': changeColor }" v-bind:class="{ 'color': changeColor }" name="share-outline"></ion-icon>
+                </div>
+                
             </div>
-
-           <!-- <div class="climat"> -->
-               <div class="sun"></div>
-           <!-- </div> -->
+            <div class="slide_down" v-if="show">
+                <input class="input-email" v-model="valueInput" @input="checkInput" type="email">
+                <textarea class="input-commentaire" type="text" name="" id="" cols="20" rows="3"></textarea>
+            </div>
+        
+           <div class="sun"></div>
            <div class="city">
-                <input type="text" v-model="request" v-on:keyup.enter="getWeather">
+                <input class="nameCity" type="text" v-model="cityName" v-on:keyup.enter="getWeather" @input="is_city_valid">
            </div>
-           {{info}}
-           {{result}}
+           <!-- <div class="separateur"></div>
+           <div class="text_info"><p>Information</p></div> -->
+           <div class="info_city">
+               <div class="name_info">
+                   <p>Ressenti :</p>
+                   <p>Pression :</p>
+                   <p>Humidité :</p>
+               </div>
+               <div class="result_info_city">
+                    <p>{{feels}} <b>°</b></p>
+                    <p>{{pressure}} <b>Pa</b></p>
+                    <p>{{humidity}} <b>%</b></p>
+               </div>
+           </div>
+           <div class="separateur_bottom"></div>
         </section>
     </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>
